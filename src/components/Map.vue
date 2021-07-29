@@ -14,10 +14,10 @@ import { ref } from '@vue/reactivity'
 export default {
     name: 'Map',
     setup(){
-        // OpenStreetMap url to consume
-        const osmSource = ref('http://localhost:8080')
+      // OpenStreetMap url to consume
+      const osmSource = ref('http://localhost:8080')
 
-        return {osmSource}
+      return {osmSource}
   }
 }
 </script> 
