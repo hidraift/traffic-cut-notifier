@@ -1,0 +1,51 @@
+version: "3.7"
+
+networks:
+    traffic-proxy:
+      driver: bridge
+
+services:
+    map-data:
+        container_name: traffic-map-data
+        environment:
+            - DOWNLOAD_PBF=https://download.geofabrik.de/${CONTINENT_NAME}/${REGION_NAME}-latest.osm.pbf
+            - DOWNLOAD_POLY=https://download.geofabrik.de/${CONTINENT_NAME}/${REGION_NAME}.poly
+        image: overv/openstreetmap-tile-server
+        networks:
+            - traffic-proxy
+        volumes:
+            - openstreetmap-data:/var/lib/postgresql/12/main
+        command: "import"
+    map-osm:
+        container_name: traffic-map-osm
+        environment:
+            - TZ=UTC
+        image: overv/openstreetmap-tile-server
+        depends_on:
+            - map-data
+        networks:
+            - traffic-proxy
+        ports:
+            - "8080:80"
+        restart: always
+        volumes_from:
+            - map-data
+        command: "run"
+
+    webapp:
+        container_name: traffic-client-web
+        image: nginx
+        ports:
+            - "9080:80"
+        depends_on:
+            - map-osm
+        volumes:
+            - ./dist:/usr/share/nginx/html
+
+volumes:
+    openstreetmap-data:
+        driver: local
+        name: openstreetmap-data
+    openstreetmap-rendered-tiles:
+        driver: local
+        name: openstreetmap-rendered-tiles
