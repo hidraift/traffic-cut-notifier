@@ -1,5 +1,4 @@
 # Traffic Cut Notifier [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
-
 ## :scroll: Introduction
 
 Consuming OpenData from the Malaga city council, it applies to any OpenData source, informing the user of traffic cuts in the city.
@@ -13,7 +12,6 @@ Consuming OpenData from the Malaga city council, it applies to any OpenData sour
     *   The method to keep only one style to push commit at origin
     *   Automatically generating CHANGELOGs
     *   See more info at [conventional commits](www.conventionalcommits.org/en/v1.0.0/)
-# traffic-cut-notifier
 
 ## Project setup
 ```
