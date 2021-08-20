@@ -1,5 +1,4 @@
 # Traffic Cut Notifier [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
-
 ## :scroll: Introduction
 
 Consuming OpenData from the Malaga city council, it applies to any OpenData source, informing the user of traffic cuts in the city.
@@ -13,4 +12,38 @@ Consuming OpenData from the Malaga city council, it applies to any OpenData sour
     *   The method to keep only one style to push commit at origin
     *   Automatically generating CHANGELOGs
     *   See more info at [conventional commits](www.conventionalcommits.org/en/v1.0.0/)
-s
+
+## :computer: Execute development environment
+
+A Project setup
+```
+npm install
+```
+
+Compiles and hot-reloads for development
+```
+npm run serve
+```
+
+Compiles and minifies for production
+```
+npm run build
+```
+
+_Customize configuration._
+See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+## :computer: Execute application environment
+
+We can change parameters to run in _.env_ file and performance configuration step:
+
+```
+docker-compose config
+```
+
+The next step must be to build images and run containers:
+
+```
+docker-compose up
+```
