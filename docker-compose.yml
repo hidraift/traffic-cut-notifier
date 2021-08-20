@@ -9,7 +9,9 @@ services:
         container_name: traffic-map-data
         environment:
             - DOWNLOAD_PBF=https://download.geofabrik.de/${CONTINENT_NAME}/${REGION_NAME}-latest.osm.pbf
+            #- DOWNLOAD_PBF=https://download.openstreetmap.fr/extracts/${CONTINENT_NAME}/${COUNTRY_NAME}/${REGION_NAME}.osm.pbf
             - DOWNLOAD_POLY=https://download.geofabrik.de/${CONTINENT_NAME}/${REGION_NAME}.poly
+            - OSM2PGSQL_EXTRA_ARGS=--flat-nodes /nodes/flat_nodes.bin
         image: overv/openstreetmap-tile-server
         networks:
             - traffic-proxy
@@ -35,6 +37,7 @@ services:
     webapp:
         container_name: traffic-client-web
         image: nginx
+        profiles: ["nginx"]
         ports:
             - "9080:80"
         depends_on:

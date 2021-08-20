@@ -1,9 +1,6 @@
 .DS_Store
 node_modules
 /dist
-/public
-/docker_osm
-run_OSM.sh
 
 
 # local env files
